@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="keywords" content="课程格子,阴阳师,网易云,打卡,钉钉,助理,日程表,超级课程表,可汗学院,同步助手,通讯录,学习,神器,办公软件,记录,作业帮,课程表,家长通,考勤,系统,欲望学院,高效,教务,一键签到,培训宝">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<!-- 禁止浏览器从本地缓存中调阅页面。--> 
+	<meta http-equiv="pragram" content="no-cache"> 
+	<!--网页不保存在缓存中，每次访问都刷新页面。--> 
+	<meta http-equiv="cache-control" content="no-cache, must-revalidate"> 
+	<!--同上面意思差不多，必须重新加载页面--> 
+	<!--网页在缓存中的过期时间为0，一旦网页过期，必须从服务器上重新订阅--> 
+	<meta http-equiv="expires" content="0"> 
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+	<script type="text/javascript" src="rem.js"></script>
+	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<title>教务宝官网</title>
+	<style type="text/css">
+	/*教务宝：让教务更简单！*/
+	html{
+		font-family: "Microsoft YaHei";
+	}
+	body{
+		margin:0;
+		padding: 0;
+		font-family: "Microsoft YaHei";
+	}/*图片占满全屏*/
+	/*css测试*/
+	.td{height: 20px;}
+	/*置顶跳转*/
+	.arrow{
+        border: 9px solid transparent;
+        border-bottom-color: rgba(48,65,82,1);
+        width: 0px;
+        height: 0px;
+        top:0px
+    }
+    .stick{
+        width: 8px;
+        height: 14px;
+        border-radius: 1px;
+        background-color: rgba(48,65,82,1);
+        top:15px;
+    }
+    #gotop div{
+        position: absolute;
+        margin: auto;
+        right: 0px;
+        left: 0px;
+    }
+    #gotop{
+        background-color:rgba(245,245,245,1);
+        height: 38px;
+        width: 38px;
+        border-radius: 3px;
+        display: block;
+        cursor: pointer;
+        position: fixed;
+        right: 50px;
+        bottom: 100px;
+        display: none;
+    }
+	.function {
+		width: 100%;
+		background-color:rgba(255,255,255,1);
+		vertical-align : bottom;
+		margin-top: 0.6rem;
+	}
+	.function img:nth-child(1){
+		width: 1rem;
+		height: 1rem;
+	}
+	.function img:nth-child(2){
+		width: 1rem;
+		height: 1rem;
+	}
+	.function img:nth-child(3){
+		width: 1rem;
+		height: 1rem;
+	}
+	.function img:nth-child(4){
+		width: 1rem;
+		height: 1rem;
+	}
+	.function img:nth-child(5){
+		width: 1rem;
+		height: 1rem;
+	}
+	td{
+		text-align: center;
+	}
+	/*要设置border-spacing,必须要有border-collapse: separate;才会生效。*/
+	table{
+		margin:0 auto;
+		border-collapse: separate;
+		border-spacing: 0.1rem 0.1rem;
+	}
+	.summary{
+		font-weight: bold;
+		font-size:0.18rem;
+		color: rgba(48,65,82,1);
+	}
+	.state{
+		font-size:0.16rem;
+		color: rgba(48,65,82,0.5);
+	}
+	/*limits*/
+	.limits{
+		width: 100%;
+		height: 5.8rem;
+		background-color:rgba(255,255,255,1);
+		position:absolute; 
+		margin-top: 0.28rem;
+	}	
+	.about_limits{
+		top:1.5rem;
+		left:2.2rem;
+		position:absolute;
+	}
+	.limits_pics{
+		display: block;
+		float: right;
+		margin-top: 0.48rem;
+		margin-right: 2.2rem;
+	}
+	.limits_pics img:nth-child(1){width:23%;float: right;}
+	.limits_pics img:nth-child(2){width:23%;float: right;}
+	/*sign*/
+	.sign{
+		width: 100%;
+		background-color:rgba(245,245,245,1);
+		position:absolute; 
+		margin-top: 5.8rem;
+		height: 5.3rem
+	}
+	.about_sign{
+		top:1.5rem;
+		right:2.2rem;
+		position:absolute;
+	}
+	.sign_pics{
+		display: block;
+		float:left;
+		margin-top: 0.46rem;
+		margin-left: 2.2rem;
+	}
+	.sign_pics img{width: 2.4rem;height: 4.4rem;}
+	/*message*/
+	.message{
+		width: 100%;
+		background-color:rgba(255,255,255,1);
+		position:absolute; 
+		margin-top: 11.2rem;
+	}	
+	.about_message{
+		top:1.5rem;
+		left:2.2rem;
+		position:absolute;
+	}
+	.message_pics{
+		display: block;
+		float: right;
+		margin-top: 0.48rem;
+		margin-right: 2.2rem;
+	}
+	.message_pics img:nth-child(1){width: 2.4rem;height: 4.4rem;}
+	.message_pics img:nth-child(2){width: 2.4rem;height: 4.42rem;}
+	/*student*/
+	.student{
+		width: 100%;
+		height: 5.9rem;
+		background-color:rgba(245,245,245,1);
+		position:absolute; 
+		margin-top: 16.6rem;
+	}
+	.about_student{
+		top:1.5rem;
+		right:2.2rem;
+		position:absolute;
+	}
+	.student_pics{
+		display: block;
+		float:left;
+		margin-top: 0.48rem;
+		margin-left: 2.2rem;
+	}
+	.student_pics img:nth-child(1){width: 2.4rem;height: 4.4rem;}
+	.student_pics img:nth-child(2){width: 2.4rem;height: 4.9rem;}
+	/*statistical*/
+	.statistical{
+		width: 100%;
+		height: 5.6rem;
+		background-color:rgba(255,255,255,1);
+		position:absolute; 
+		margin-top: 22.4rem;
+	}	
+	.about_statistical{
+		top:1.5rem;
+		left:2.2rem;
+		position:absolute;
+	}
+	.statistical_pics{
+		display: block;
+		float: right;
+		margin-top: 0.48rem;
+		margin-right: 2.2rem;
+	}
+	.statistical_pics img{width: 2.4rem;height: 4.4rem;}
+	/*data*/
+	.data img{
+		width: 100%;
+		height: 100%;
+		margin-top: 0.5rem;
+	}
+	/*idea*/
+	.idea{
+		width: 100%;
+		background-color:rgba(255,255,255,1);
+		position:absolute;
+	}
+	.idea h1{
+		text-align: center;
+		margin-top:0.8rem;
+		color: rgba(48,65,82,1)
+	}
+	.carousel-inner img{
+		width: 1.6rem;
+		height: 1.6rem;
+	}
+	</style>
+</head>
+<body>
+	<div class="bg" style="position: relative;">
+		<img src="images\bg.png" style="width: 100%;height: 100%;" />
+	<div class="word" style="position: absolute;top:31%;left:12%;">
+		<P style="font-weight:bold;font-size: 0.68rem;color: rgba(48,65,82,1);letter-spacing:2px;margin-bottom: 1px;">教务宝APP</P>
+		<P style="font-size: 0.4rem;color: rgba(48,65,82,1);letter-spacing:2px;margin-bottom: 6px;">您的贴身教务管理专家</P>
+		<p style="font-size: 0.3rem;color: rgba(48,65,82,0.5);letter-spacing:2px;">Educational Administrative Specialist</p>
+	</div>
+	<div class="way" style="position: absolute;display: block;top:60%;left:12%;">
+		<a href="https://itunes.apple.com/us/app/jiao-wu-bao-rang-jiao-wu-guan/id1160254822?mt=8" target="_blank"><img src="images\icon_download_on_the_appstore.png" style="width: 1.7rem;height: 0.5rem;margin-right: 0.18rem;" /></a>
+		<a href="http://sj.qq.com/myapp/detail.htm?apkName=com.sc_edu.jwb" target="_blank"><img src="images\icon_download_on_the_android.png" style="width: 1.46rem;height: 0.5rem;margin-right: 0.18rem;"/></a>
+		<a href="http://crm.yunyuer.com/jwb/ios_weex/JWBWeb/JWBTF/JWBTF_guidance.html" target="_blank"><img src="images\icon_testflight.png" style="width: 1.6rem;height: 0.5rem;margin-right: 0.18rem;"/></a>
+	</div>
+	</div>
+	<div class="function" >
+		<table width="74%">
+		<tr>
+		<!--a href="#" onclick="return false"禁止a标签点击进行跳转-->
+			<td width="15%"><a href="javascript:scroll('limits');" target="_self"><img onMouseOver="this.src='images/hover_icon_permissions.png'" onMouseOut="this.src='images/icon_permissions copy.png'" src="images/icon_permissions copy.png"/></a></td>
+			<td width="15%" ><a href="javascript:scroll('sign');" target="_self"><img onMouseOver="this.src='images/hover_icon_lesson.png'" onMouseOut="this.src='images/icon_lesson copy.png'" src="images/icon_lesson copy.png"/></a></td>
+			<td width="15%"><a href="javascript:scroll('message');" target="_self"><img onMouseOver="this.src='images/hover_icon_message.png'" onMouseOut="this.src='images/icon_message.png'" src="images/icon_message.png"/></a></td>
+			<td width="15%"><a href="javascript:scroll('student');" target="_self"><img onMouseOver="this.src='images/hover_icon_contract.png'" onMouseOut="this.src='images/icon_contract copy.png'" src="images/icon_contract copy.png"/></a></td>
+			<td width="15%"><a href="javascript:scroll('statistical');" target="_self"><img onMouseOver="this.src='images/hover_icon_time.png'" onMouseOut="this.src='images/icon_time copy.png'" src="images/icon_time copy.png"/></a></td>
+		</tr>
+		<tr class="summary">
+			<td><span>权限设定</span></td>
+			<td><span>排课、签到、消课</span></td>
+			<td><span>短信提醒</span></td>
+			<td><span>合同管理</span></td>
+			<td><span>课时统计结算</span></td>
+		</tr>
+		<tr class="state">
+			<td width="10%">校长、教务、老师<br/>各司其职</td>
+			<td>老师批量签到，<br/>消课记录随时看</td>
+			<td>免费提供短信，<br/>家校实时好沟通</td>
+			<td>一键办理合同，<br/>剩余课时早知道</td>
+			<td>老师课时统计，<br/>方便快捷省时间</td>
+		</tr>
+	</table>
+	</div>
+	<div class="limits" id="limits">
+		<div class="about_limits">
+			<p style="font-size: 0.3rem;color: rgba(48,65,82,1);font-weight: bold;letter-spacing: 0.03rem;margin-bottom: 0.1rem;">权限设定</p>
+			<p style="font-size: 0.14rem;color: rgba(48,65,82,0.5);letter-spacing: 0.016rem;">教务宝目前设定三个角色： 机构所有者、教务、老师。<br/>分权限设定使机构分工明确，满足各种类型机构使用。</p>
+		</div>
+		<div class="limits_pics">
+			<img src="images/pic_mine_permissions.png"/>
+			<img src="images/pic_mine.png"/>
+		</div>
+	</div>
+	<div class="sign" id="sign">
+		<div class="about_sign">
+			<p style="font-size:0.3rem;color: rgba(48,65,82,1);font-weight: bold;letter-spacing: 0.03rem;margin-bottom:0.1rem;">排课、签到、消课</p>
+			<p style="font-size:0.14rem;color: rgba(48,65,82,0.5);letter-spacing: 0.016rem;">班级批量添加课节，选择学员加入，<br/>结课挂钩老师绩效考评，消课记录全掌握。</p>
+		</div>
+		<div class="sign_pics">
+			<img src="images/pic_team.png"/>
+			<img src="images/pic_check_in.png"/>
+		</div>
+	</div>
+	<div class="message" id="message">
+		<div class="about_message">
+			<p style="font-size: 0.3rem;color: rgba(48,65,82,1);font-weight: bold;letter-spacing:0.03rem;margin-bottom:0.1rem;">短信提醒</p>
+			<p style="font-size: 0.14rem;color: rgba(48,65,82,0.5);letter-spacing: 0.016rem;">教务宝免费赠送500条机构短信，可用于学员签到、<br/>续约、学员上课、家长接送等提醒;<br/>还有推荐其他机构获得免费短信活动！</p>
+		</div>
+		<div class="message_pics">
+			<img src="images/pic_message_notice.png"/>
+			<img src="images/pic_message_quantity .png"/>
+		</div>
+	</div>
+	<div class="student" id="student">
+		<div class="about_student">
+			<p style="font-size: 0.3rem;color: rgba(48,65,82,1);font-weight: bold;letter-spacing: 0.03rem;margin-bottom: 0.1rem;">学员合同管理</p>
+			<p style="font-size: 0.14rem;color: rgba(48,65,82,0.5);letter-spacing: 0.016rem;">展示学员头像更清晰，一键购买课时；购买操作全记录，<br/>实时剩余课时查看。</p>
+		</div>
+		<div class="student_pics">
+			<img src="images/pic_student_add.png"/>
+			<img src="images/pic_student.png"/>
+		</div>
+	</div>
+	<div class="statistical" id="statistical">
+		<div class="about_statistical">
+			<p style="font-size: 0.3rem;color: rgba(48,65,82,1);font-weight: bold;letter-spacing: 0.03rem;margin-bottom: 0.1rem;">课时统计结算</p>
+			<p style="font-size: 0.14rem;color: rgba(48,65,82,0.5);letter-spacing: 0.016rem;">贴心的自定义时间查看课时课节统计，多方位统计更贴心，<br/>老师绩效考评一步到位。</p>
+		</div>
+		<div class="statistical_pics">
+			<img src="images/pic_time.png"/>
+			<img src="images/pic_teacher.png"/>
+		</div>
+	<div class="data">
+		<img src="images/pic_data.png"/>
+	</div>
+	<div class="idea">
+		<h1 style="font-family: 'Microsoft YaHei';font-weight: bold;font-size: 0.32rem;">看看用户怎么说</h1>
+	<!-- 轮播（Carousel）项目 -->
+	<div id="myCarousel" class="carousel slide" style="height: 4rem;">
+    <!-- 轮播（Carousel）指标 -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+    </ol>   
+    <!-- 轮播（Carousel）项目 -->
+    <div class="carousel-inner" align="center">
+        <div class="item active" style="height: 3rem;margin-top: 0.45rem;">
+            <img src="images/jigou_logo/logo_心动滑轮社.png" alt="First slide">
+            <div class="carousel-caption" style="display: block;margin-bottom:-1rem;color:rgba(48,65,82,1);font-size: 0.16rem;font-family: 'Microsoft YaHei';bottom: 90px;text-shadow: none;">这款软件界面简洁，操作很方便，帮我解决了不少麻烦。特别值得一提的是，班级内可添加多个老师进行排课，这样老师的调课会更加的便捷，对于老师的课时计算也十分方便，因为我们有全职老师和兼职老师，分别按课节和课时数进行的统计让我不再需要繁琐的计算工资，很赞！</p></div>
+        </div>
+        <div class="item" style="height: 300px;margin-top: 45px;">
+            <img src="images/jigou_logo/logo_楚天教育.png" alt="Second slide">
+            <div class="carousel-caption" style="display: block;margin-bottom:-1rem;color:rgba(48,65,82,1);font-size: 0.16rem;font-family: 'Microsoft YaHei';bottom: 90px;text-shadow: none;">这款软件界面简洁，操作很方便，帮我解决了不少麻烦。特别值得一提的是，班级内可添加多个老师进行排课，这样老师的调课会更加的便捷，对于老师的课时计算也十分方便，因为我们有全职老师和兼职老师，分别按课节和课时数进行的统计让我不再需要繁琐的计算工资，很赞！</p></div>
+        </div>
+        <div class="item" style="height: 300px;margin-top: 45px;">
+            <img src="images/jigou_logo/logo_拉维学院.png" alt="Third slide">
+            <div class="carousel-caption" style="display: block;margin-bottom:-1rem;color:rgba(48,65,82,1);font-size: 0.16rem;font-family: 'Microsoft YaHei';bottom: 90px;text-shadow: none;">这款软件界面简洁，操作很方便，帮我解决了不少麻烦。特别值得一提的是，班级内可添加多个老师进行排课，这样老师的调课会更加的便捷，对于老师的课时计算也十分方便，因为我们有全职老师和兼职老师，分别按课节和课时数进行的统计让我不再需要繁琐的计算工资，很赞！</p></div>
+        </div>
+        <div class="item" style="height: 300px;margin-top: 45px;">
+            <img src="images/jigou_logo/logo_连升京剧.png" alt="fourth slide">
+            <div class="carousel-caption" style="display: block;margin-bottom:-1rem;color:rgba(48,65,82,1);font-size: 0.16rem;font-family: 'Microsoft YaHei';bottom: 90px;text-shadow: none;">这款软件界面简洁，操作很方便，帮我解决了不少麻烦。特别值得一提的是，班级内可添加多个老师进行排课，这样老师的调课会更加的便捷，对于老师的课时计算也十分方便，因为我们有全职老师和兼职老师，分别按课节和课时数进行的统计让我不再需要繁琐的计算工资，很赞！</p></div>
+        </div>
+        <div class="item" style="height: 300px;margin-top: 45px;">
+            <img src="images/jigou_logo/logo_翔宇教育.png" alt="fourth slide">
+            <div class="carousel-caption" style="display: block;margin-bottom:-1rem;color:rgba(48,65,82,1);font-size: 0.16rem;font-family: 'Microsoft YaHei';bottom: 90px;text-shadow: none;">这款软件界面简洁，操作很方便，帮我解决了不少麻烦。特别值得一提的是，班级内可添加多个老师进行排课，这样老师的调课会更加的便捷，对于老师的课时计算也十分方便，因为我们有全职老师和兼职老师，分别按课节和课时数进行的统计让我不再需要繁琐的计算工资，很赞！</p></div>
+        </div>
+    </div>
+    <!-- 轮播（Carousel）导航 -->
+    <!--http://www.runoob.com/bootstrap/bootstrap-carousel-plugin.html-->
+    <a class="carousel-control left" style="opacity: 0.01" href="#myCarousel" 
+       data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" style="opacity: 0.01" href="#myCarousel" 
+       data-slide="next">&rsaquo;</a>
+    <div class="scan">
+		<img src="images/pic_h5_code.png" style="display:block;margin:0 auto;margin-top: 0.4rem;margin-bottom: 0.16rem;width: 1.2rem;height: 1.2rem;">
+		<p style="color:rgba(48,65,82,1);font-size: 0.18rem;text-align: center;margin-bottom: 0.25rem;">扫一扫，查看功能介绍</p>
+	</div>
+	<div class="way2" align="center" style="margin-bottom: 4rem;">
+		<a href="https://itunes.apple.com/us/app/jiao-wu-bao-rang-jiao-wu-guan/id1160254822?mt=8" target="_blank"><img src="images\icon_download_on_the_appstore.png" style="width: 1.15rem;height: 0.36rem;" /></a>
+		<a href="http://sj.qq.com/myapp/detail.htm?apkName=com.sc_edu.jwb" target="_blank"><img src="images\icon_download_on_the_android.png" style="width: 1rem;height: 0.36rem;"/></a>
+		<a href="http://crm.yunyuer.com/jwb/ios_weex/JWBWeb/JWBTF/JWBTF_guidance.html" target="_blank"><img src="images\icon_testflight.png" style="width: 1.11rem;height:0.36rem;"/></a>
+	</div>
+	<!--置顶跳转部分，重要！-->
+	<div id="article"></div>
+	<div id="gotop">
+	<div class="arrow"></div>
+	<div class="stick"></div>
+</div>
+	<script src="http://cdn.staticfile.org/jquery/1.11.1-rc2/jquery.min.js"></script>
+	<script>
+	//置顶跳转http://www.jianshu.com/p/5bac35c3dc72
+	$(function(){
+    $(window).scroll(function(){  //只要窗口滚动,就触发下面代码
+
+        var scrollt = document.documentElement.scrollTop + document.body.scrollTop; //获取滚动后的高度
+
+        if( scrollt >200 ){  //判断滚动后高度超过200px,就显示
+
+            $("#gotop").fadeIn(400); //淡入
+
+        }else{
+
+            $("#gotop").stop().fadeOut(400); //如果返回或者没有超过,就淡出.必须加上stop()停止之前动画,否则会出现闪动
+
+        }
+
+    });
+
+    $("#gotop").click(function(){ //当点击标签的时候,使用animate在200毫秒的时间内,滚到顶部
+
+        $("html,body").animate({scrollTop:"0px"},500);
+
+    }); 
+
+	});
+	</script>
+	<script src="http://hovertree.com/ziyuan/jquery/jquery-1.11.3.min.js"></script>
+	<script src="http://keleyi.com/keleyi/phtml/jqtexiao/37/jquery.hovertreescroll.js"></script>
+	<script>
+	// 页内锚点平滑跳转http://keleyi.com/a/bjae/jrdfulnx.htm
+	function scroll(id) {
+	$("#" + id).HoverTreeScroll(1000);
+	}
+	</script>
+</body>
+</html>
+
